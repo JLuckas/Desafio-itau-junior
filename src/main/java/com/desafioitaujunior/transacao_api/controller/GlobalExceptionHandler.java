@@ -1,9 +1,8 @@
 package com.desafioitaujunior.transacao_api.controller;
 
-import com.desafioitaujunior.transacao_api.infrastructure.exceptions.Unprocessableentity;
+import com.desafioitaujunior.transacao_api.infrastructure.exceptions.UnprocessableEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -11,9 +10,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(Unprocessableentity.class)
+    @ExceptionHandler(UnprocessableEntity.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public ResponseEntity<String> handleUnprocessableentity(Unprocessableentity e) {
+    public ResponseEntity<String> handleUnprocessableentity(UnprocessableEntity e) {
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("Erro: " + e.getMessage());
     }
 
